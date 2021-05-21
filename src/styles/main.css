@@ -193,6 +193,11 @@ header {
     padding: 5px 20px;
 }
 
+#container-list a {
+    text-decoration: none;
+    color: black;
+}
+
 @media screen and (max-width: 950px) {
     .row {
         margin: 50px;
