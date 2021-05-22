@@ -198,6 +198,44 @@ header {
     color: black;
 }
 
+#restaurant {
+    padding: 0 100px;
+}
+
+.image-detail {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.padding20 {
+    padding-top: 20px;
+}
+
+.padding10 {
+    padding-top: 10px;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.marginStart40 {
+    margin-left: 40px;
+}
+
+.card-review {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 0 0 10px 0;
+    position: relative;
+    padding: 10px;
+    margin-top: 10px;
+}
+
 @media screen and (max-width: 950px) {
     .row {
         margin: 50px;
@@ -226,6 +264,18 @@ header {
         width: 100%;
         left: 0;
         top: 0;
+    }
+
+    #restaurant {
+        padding: 0 20px;
+    }
+
+    .image-detail {
+        max-width: 100%;
+        min-width: 100%;
+        max-height: 300px;
+        object-fit: cover;
+        border-radius: 20px;
     }
 }
 

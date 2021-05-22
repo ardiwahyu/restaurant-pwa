@@ -2,6 +2,7 @@ const activatedDrawer = (drawer, url) => {
     const li = drawer.querySelector('ul').querySelectorAll('li');
     removeActiveDrawer(li);
     if (indexUrl[url] != undefined) li[indexUrl[url]].classList.add("active");
+    drawer.classList.add('hidden');
 }
 
 const indexUrl = {
