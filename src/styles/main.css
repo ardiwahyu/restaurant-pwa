@@ -198,8 +198,8 @@ header {
     color: black;
 }
 
-#restaurant {
-    padding: 0 100px;
+.restaurant-container {
+    margin: 0 100px;
 }
 
 .image-detail {
@@ -245,6 +245,65 @@ header {
     color: blue;
     text-decoration: underline;
 }
+
+.add-review {
+    background: #f2f2f2;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.input {
+    padding: 10px 20px;
+}
+
+.container-input {
+    display: grid;
+    grid-template-columns: 20% 75%;
+    margin-bottom: 10px;
+}
+
+.label {
+    padding: 10px;
+}
+
+#btn-submit {
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0 20px;
+    background-color: green;
+    border-radius: 10px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    align-self: flex-end;
+    margin-right: 50px;
+    margin-top: 20px;
+}
+
+.like {
+    font-size: 18px;
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    background-color: #db0000;
+    color: white;
+    border: 0;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 @media screen and (max-width: 950px) {
     .row {
         margin: 50px;
@@ -275,8 +334,8 @@ header {
         top: 0;
     }
 
-    #restaurant {
-        padding: 0 20px;
+    .restaurant-container {
+        margin: 0 20px;
     }
 
     .image-detail {
@@ -348,5 +407,23 @@ header {
     .nav-collapse ul {
         display: grid;
         grid-template-columns: 100%;
+    }
+
+    .container-input {
+        display: grid;
+        grid-template-columns: 100%;
+        margin-bottom: 10px;
+    }
+
+    #btn-submit {
+        min-width: 44px;
+        min-height: 44px;
+        padding: 0 20px;
+        background-color: green;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        cursor: pointer;
+        align-self: center;
     }
 }

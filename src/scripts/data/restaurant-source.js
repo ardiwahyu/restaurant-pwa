@@ -27,7 +27,8 @@ class RestaurantSource {
                     "X-Auth-Token": CONFIG.KEY,
                     "Content-Type": "application/json"
                 },
-                body: body
+                body: body,
+                method: "POST"
             }
         );
         const responseJson = await response.json();
