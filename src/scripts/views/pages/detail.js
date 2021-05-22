@@ -1,6 +1,6 @@
 import UrlParser from '../../routes/url-parser';
 import RestaurantSource from '../../data/restaurant-source';
-import { createRestaurantDetailTemplate } from '../templates/template-creator';
+import { createRestaurantDetailTemplate, createAllReview } from '../templates/template-creator';
 
 const Detail = {
     async render() {
@@ -19,6 +19,13 @@ const Detail = {
         const restaurant = await RestaurantSource.detailRestaurant(url.id);
         const restaurantContainer = document.querySelector("#restaurant");
         restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+
+        const btnShow = document.querySelector("#btn-show");
+        const reviewContainer = document.querySelector("#review-container");
+        btnShow.addEventListener("click", () => {
+            reviewContainer.innerHTML = createAllReview(restaurant.customerReviews);
+            btnShow.classList.add("hidden");
+        })
     }
 }
 

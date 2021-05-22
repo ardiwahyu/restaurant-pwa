@@ -34,7 +34,8 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <p class="padding10"><b>Deskripsi</b></p>
     <p class="padding10 justify">${restaurant.description}</p>
     <p class="padding10"><b>Customer Review</b></p>
-    <div class="padding10">${createReview(restaurant.customerReviews)}</div>
+    <div id="review-container" class="padding10">${create3Review(restaurant.customerReviews)}</div>
+    <button id="btn-show" class="btn-show">Show All</button>
 `;
 
 const createPoint = (array) => {
@@ -45,7 +46,24 @@ const createPoint = (array) => {
     return innerLi;
 }
 
-const createReview = (array) => {
+const create3Review = (array) => {
+    let innerReview = "";
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        innerReview += `
+            <div class="card-review">
+                <p><u>${element.date} by <b>${element.name}</b></u></p>
+                <p>${element.review}</p>
+            </div>
+        `;
+        if (i === 2) {
+            break;
+        }
+    }
+    return innerReview;
+}
+
+const createAllReview = (array) => {
     let innerReview = "";
     array.forEach(element => {
         innerReview += `
@@ -58,4 +76,4 @@ const createReview = (array) => {
     return innerReview;
 }
 
-export { createRestaurantItemTemplate, createRestaurantDetailTemplate };
+export { createRestaurantItemTemplate, createRestaurantDetailTemplate, createAllReview };

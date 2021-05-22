@@ -236,6 +236,15 @@ header {
     margin-top: 10px;
 }
 
+.btn-show {
+    min-width: 44px;
+    min-height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline;
+}
 @media screen and (max-width: 950px) {
     .row {
         margin: 50px;
