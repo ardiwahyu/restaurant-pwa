@@ -6,6 +6,7 @@ import {
     createLikeButtonTemplate,
     createLikedButtonTemplate
 } from '../templates/template-creator';
+import LikeButtonInitiator from '../../utils/like-button-initiator';
 
 const Detail = {
     async render() {
@@ -66,8 +67,17 @@ const Detail = {
             }
         });
 
-        const likeButtonContainer = document.querySelector('#likeButtonContainer');
-        likeButtonContainer.innerHTML = createLikeButtonTemplate();
+        LikeButtonInitiator.Infinity({
+            likeButtonContainer: document.querySelector('#likeButtonContainer'),
+            restaurant: {
+                id: restaurant.id,
+                name: restaurant.name,
+                pictureId: restaurant.pictureId,
+                city: restaurant.city,
+                rating: restaurant.rating,
+                description: restaurant.description
+            }
+        });
     }
 }
 
