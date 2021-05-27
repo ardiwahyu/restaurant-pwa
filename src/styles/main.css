@@ -145,7 +145,7 @@ header {
 .row {
     margin: 50px;
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .row:after {
@@ -193,7 +193,7 @@ header {
     padding: 5px 20px;
 }
 
-#container-list a {
+.row a {
     text-decoration: none;
     color: black;
 }
@@ -308,7 +308,7 @@ header {
     .row {
         margin: 50px;
         display: grid;
-        grid-template-columns: auto auto;
+        grid-template-columns: repeat(2, 1fr);
     }
     header {
         background: #616161;
@@ -389,7 +389,7 @@ header {
     .row {
         margin: 20px;
         display: grid;
-        grid-template-columns: auto;
+        grid-template-columns: 1fr;
     }
 
     header {

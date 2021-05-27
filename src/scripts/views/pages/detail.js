@@ -67,7 +67,7 @@ const Detail = {
             }
         });
 
-        LikeButtonInitiator.Infinity({
+        LikeButtonInitiator.init({
             likeButtonContainer: document.querySelector('#likeButtonContainer'),
             restaurant: {
                 id: restaurant.id,
