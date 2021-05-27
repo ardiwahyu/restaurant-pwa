@@ -1,5 +1,6 @@
 import FavoriteRestaurantIdb from '../../data/favoriterestaurant-idb';
 import { createRestaurantItemTemplate } from '../templates/template-creator';
+import LoadingInitiator from '../../utils/loading-initiator';
 
 const Favorite = {
     async render() {
@@ -14,11 +15,15 @@ const Favorite = {
     },
 
     async afterRender() {
+        LoadingInitiator.init();
+
+        LoadingInitiator.showLoading()
         const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
         const listContainer = document.querySelector("#container-list");
         restaurants.forEach((restaurant) => {
             listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
         });
+        LoadingInitiator.hideLoading();
     }
 }
 

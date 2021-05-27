@@ -1,5 +1,6 @@
 import RestaurantSource from '../../data/restaurant-source';
 import { createRestaurantItemTemplate } from '../templates/template-creator';
+import LoadingInitiator from '../../utils/loading-initiator';
 
 const Home = {
     async render() {
@@ -14,11 +15,15 @@ const Home = {
     },
 
     async afterRender() {
+        LoadingInitiator.init();
+
+        LoadingInitiator.showLoading()
         const restaurants = await RestaurantSource.listRestaurant();
         const listContainer = document.querySelector("#container-list");
         restaurants.forEach((restaurant) => {
             listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
         });
+        LoadingInitiator.hideLoading();
     }
 }
 

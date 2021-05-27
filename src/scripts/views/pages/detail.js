@@ -7,6 +7,7 @@ import {
     createLikedButtonTemplate
 } from '../templates/template-creator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LoadingInitiator from '../../utils/loading-initiator';
 
 const Detail = {
     async render() {
@@ -34,6 +35,9 @@ const Detail = {
     },
 
     async afterRender() {
+        LoadingInitiator.init();
+
+        LoadingInitiator.showLoading()
         const url = UrlParser.parseActiveUrlWithoutCombiner();
         const restaurant = await RestaurantSource.detailRestaurant(url.id);
         const restaurantContainer = document.querySelector("#restaurant");
@@ -50,6 +54,7 @@ const Detail = {
         const name = document.querySelector("#name");
         const review = document.querySelector("#review");
         btnSubmit.addEventListener("click", async () => {
+            LoadingInitiator.showLoading();
             if (!name.value || !review.value) {
                 alert("Lengkapi isian")
             } else {
@@ -65,6 +70,7 @@ const Detail = {
                 review.value = "";
                 btnShow.classList.add("hide");
             }
+            LoadingInitiator.hideLoading();
         });
 
         LikeButtonInitiator.init({
@@ -78,6 +84,7 @@ const Detail = {
                 description: restaurant.description
             }
         });
+        LoadingInitiator.hideLoading();
     }
 }
 
