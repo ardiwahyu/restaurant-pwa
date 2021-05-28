@@ -4,29 +4,29 @@ import routes from '../routes/routes';
 import activatedDrawer from '../utils/activated-drawer';
 
 class App {
-    constructor({ button, drawer, content }) {
-        this._button = button;
-        this._drawer = drawer;
-        this._content = content;
+  constructor({ button, drawer, content }) {
+    this.button = button;
+    this.drawer = drawer;
+    this.content = content;
 
-        this._initialAppShell();
-    }
+    this.initialAppShell();
+  }
 
-    _initialAppShell() {
-        DrawerInitiator.init({
-            button: this._button,
-            drawer: this._drawer,
-            content: this._content,
-        });
-    }
+  initialAppShell() {
+    DrawerInitiator.init({
+      button: this.button,
+      drawer: this.drawer,
+      content: this.content,
+    });
+  }
 
-    async renderPage() {
-        const url = UrlParser.parseActiveUrlWithCombiner();
-        const page = routes[url];
-        activatedDrawer(this._drawer, url);
-        this._content.innerHTML = await page.render();
-        await page.afterRender();
-    }
+  async renderPage() {
+    const url = UrlParser.parseActiveUrlWithCombiner();
+    const page = routes[url];
+    activatedDrawer(this.drawer, url);
+    this.content.innerHTML = await page.render();
+    await page.afterRender();
+  }
 }
 
 export default App;

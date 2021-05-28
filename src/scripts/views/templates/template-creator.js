@@ -1,6 +1,44 @@
 import CONFIG from '../../globals/config';
 import extractStringFromList from '../../utils/string-from-list';
 
+const createPoint = (array) => {
+  let innerLi = '';
+  array.forEach((element) => {
+    innerLi += `<li>${element}</li>`;
+  });
+  return innerLi;
+};
+
+const create3Review = (array) => {
+  let innerReview = '';
+  for (let i = 0; i < array.length; i++) {
+    const element = array[i];
+    innerReview += `
+            <div class="card-review">
+                <p><u>${element.date} by <b>${element.name}</b></u></p>
+                <p>${element.review}</p>
+            </div>
+        `;
+    if (i === 2) {
+      break;
+    }
+  }
+  return innerReview;
+};
+
+const createAllReview = (array) => {
+  let innerReview = '';
+  array.forEach((element) => {
+    innerReview += `
+            <div class="card-review">
+                <p><u>${element.date} by <b>${element.name}</b></u></p>
+                <p>${element.review}</p>
+            </div>
+        `;
+  });
+  return innerReview;
+};
+
 const createRestaurantItemTemplate = (restaurant) => `
     <a href="/#/detail/${restaurant.id}">
         <div class="column">
@@ -38,44 +76,6 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <button id="btn-show" class="btn-show">Show All</button>
 `;
 
-const createPoint = (array) => {
-    let innerLi = "";
-    array.forEach(element => {
-        innerLi += `<li>${element}</li>`
-    });
-    return innerLi;
-}
-
-const create3Review = (array) => {
-    let innerReview = "";
-    for (let i = 0; i < array.length; i++) {
-        const element = array[i];
-        innerReview += `
-            <div class="card-review">
-                <p><u>${element.date} by <b>${element.name}</b></u></p>
-                <p>${element.review}</p>
-            </div>
-        `;
-        if (i === 2) {
-            break;
-        }
-    }
-    return innerReview;
-}
-
-const createAllReview = (array) => {
-    let innerReview = "";
-    array.forEach(element => {
-        innerReview += `
-            <div class="card-review">
-                <p><u>${element.date} by <b>${element.name}</b></u></p>
-                <p>${element.review}</p>
-            </div>
-        `;
-    });
-    return innerReview;
-}
-
 const createLikeButtonTemplate = () => `
     <button aria-label="like this movie" id="likeButton" class="like">
         <i class="fa fa-heart-o" aria-hidden="true"></i>
@@ -88,4 +88,7 @@ const createLikedButtonTemplate = () => `
     </button>
     `;
 
-export { createRestaurantItemTemplate, createRestaurantDetailTemplate, createAllReview, createLikedButtonTemplate, createLikeButtonTemplate };
+export {
+  createRestaurantItemTemplate, createRestaurantDetailTemplate,
+  createAllReview, createLikedButtonTemplate, createLikeButtonTemplate,
+};

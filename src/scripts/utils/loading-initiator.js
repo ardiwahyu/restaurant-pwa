@@ -1,18 +1,18 @@
 const LoadingInitiator = {
-    init() {
-        this._overlay = document.querySelector('.overlay');
-        this._spanner = document.querySelector('.spanner');
-    },
+  init() {
+    this.overlay = document.querySelector('.overlay');
+    this.spanner = document.querySelector('.spanner');
+  },
 
-    showLoading() {
-        this._overlay.classList.add('show');
-        this._spanner.classList.add('show');
-    },
+  showLoading() {
+    this.overlay.classList.add('show');
+    this.spanner.classList.add('show');
+  },
 
-    hideLoading() {
-        this._overlay.classList.remove('show');
-        this._spanner.classList.remove('show');
-    }
-}
+  hideLoading() {
+    this.overlay.classList.remove('show');
+    this.spanner.classList.remove('show');
+  },
+};
 
 export default LoadingInitiator;

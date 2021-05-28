@@ -1,17 +1,15 @@
 import UrlParser from '../../routes/url-parser';
 import RestaurantSource from '../../data/restaurant-source';
 import {
-    createRestaurantDetailTemplate,
-    createAllReview,
-    createLikeButtonTemplate,
-    createLikedButtonTemplate
+  createRestaurantDetailTemplate,
+  createAllReview,
 } from '../templates/template-creator';
 import LikeButtonInitiator from '../../utils/like-button-initiator';
 import LoadingInitiator from '../../utils/loading-initiator';
 
 const Detail = {
-    async render() {
-        return `
+  async render() {
+    return `
             <div class="banner"></div>
             <div class="text">
                 <h1>FIND YOUR RESTAURANT HERE</h1>
@@ -32,60 +30,60 @@ const Detail = {
             </div>
             <div id="likeButtonContainer"></div>
         `;
-    },
+  },
 
-    async afterRender() {
-        LoadingInitiator.init();
+  async afterRender() {
+    LoadingInitiator.init();
 
-        LoadingInitiator.showLoading()
-        const url = UrlParser.parseActiveUrlWithoutCombiner();
-        const restaurant = await RestaurantSource.detailRestaurant(url.id);
-        const restaurantContainer = document.querySelector("#restaurant");
-        restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
+    LoadingInitiator.showLoading();
+    const url = UrlParser.parseActiveUrlWithoutCombiner();
+    const restaurant = await RestaurantSource.detailRestaurant(url.id);
+    const restaurantContainer = document.querySelector('#restaurant');
+    restaurantContainer.innerHTML = createRestaurantDetailTemplate(restaurant);
 
-        const btnShow = document.querySelector("#btn-show");
-        const reviewContainer = document.querySelector("#review-container");
-        btnShow.addEventListener("click", () => {
-            reviewContainer.innerHTML = createAllReview(restaurant.customerReviews);
-            btnShow.classList.add("hide");
-        })
+    const btnShow = document.querySelector('#btn-show');
+    const reviewContainer = document.querySelector('#review-container');
+    btnShow.addEventListener('click', () => {
+      reviewContainer.innerHTML = createAllReview(restaurant.customerReviews);
+      btnShow.classList.add('hide');
+    });
 
-        const btnSubmit = document.querySelector("#btn-submit");
-        const name = document.querySelector("#name");
-        const review = document.querySelector("#review");
-        btnSubmit.addEventListener("click", async () => {
-            LoadingInitiator.showLoading();
-            if (!name.value || !review.value) {
-                alert("Lengkapi isian")
-            } else {
-                const reviews = await RestaurantSource.addReview(JSON.stringify(
-                    {
-                        "id": `${url.id}`,
-                        "name": `${name.value}`,
-                        "review": `${review.value}`
-                    }
-                ));
-                reviewContainer.innerHTML = createAllReview(reviews);
-                name.value = "";
-                review.value = "";
-                btnShow.classList.add("hide");
-            }
-            LoadingInitiator.hideLoading();
-        });
+    const btnSubmit = document.querySelector('#btn-submit');
+    const name = document.querySelector('#name');
+    const review = document.querySelector('#review');
+    btnSubmit.addEventListener('click', async () => {
+      LoadingInitiator.showLoading();
+      if (!name.value || !review.value) {
+        alert('Lengkapi isian');
+      } else {
+        const reviews = await RestaurantSource.addReview(JSON.stringify(
+          {
+            id: `${url.id}`,
+            name: `${name.value}`,
+            review: `${review.value}`,
+          },
+        ));
+        reviewContainer.innerHTML = createAllReview(reviews);
+        name.value = '';
+        review.value = '';
+        btnShow.classList.add('hide');
+      }
+      LoadingInitiator.hideLoading();
+    });
 
-        LikeButtonInitiator.init({
-            likeButtonContainer: document.querySelector('#likeButtonContainer'),
-            restaurant: {
-                id: restaurant.id,
-                name: restaurant.name,
-                pictureId: restaurant.pictureId,
-                city: restaurant.city,
-                rating: restaurant.rating,
-                description: restaurant.description
-            }
-        });
-        LoadingInitiator.hideLoading();
-    }
-}
+    LikeButtonInitiator.init({
+      likeButtonContainer: document.querySelector('#likeButtonContainer'),
+      restaurant: {
+        id: restaurant.id,
+        name: restaurant.name,
+        pictureId: restaurant.pictureId,
+        city: restaurant.city,
+        rating: restaurant.rating,
+        description: restaurant.description,
+      },
+    });
+    LoadingInitiator.hideLoading();
+  },
+};
 
 export default Detail;

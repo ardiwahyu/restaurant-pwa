@@ -24,15 +24,15 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        loader: 'svg-inline-loader'
+        loader: 'svg-inline-loader',
       },
       {
         test: /\.ttf$/,
         use: [
           {
-            loader: 'ttf-loader'
+            loader: 'ttf-loader',
           },
-        ]
+        ],
       },
       {
         test: /\.(png|jpe?g|gif)$/i,

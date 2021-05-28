@@ -3,8 +3,8 @@ import { createRestaurantItemTemplate } from '../templates/template-creator';
 import LoadingInitiator from '../../utils/loading-initiator';
 
 const Favorite = {
-    async render() {
-        return `
+  async render() {
+    return `
             <div class="banner"></div>
             <div class="text">
                 <h1>FIND YOUR RESTAURANT HERE</h1>
@@ -13,25 +13,25 @@ const Favorite = {
             <div id="container-empty"></div>
             <div class="row" id="container-list"></div>
         `;
-    },
+  },
 
-    async afterRender() {
-        LoadingInitiator.init();
+  async afterRender() {
+    LoadingInitiator.init();
 
-        LoadingInitiator.showLoading()
-        const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-        const listContainer = document.querySelector("#container-list");
-        const containerEmpty = document.querySelector("#container-empty");
-        if (restaurants.length === 0) {
-            containerEmpty.classList.remove('hide');
-        } else {
-            containerEmpty.classList.add('hide');
-            restaurants.forEach((restaurant) => {
-                listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-            });
-        }
-        LoadingInitiator.hideLoading();
+    LoadingInitiator.showLoading();
+    const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+    const listContainer = document.querySelector('#container-list');
+    const containerEmpty = document.querySelector('#container-empty');
+    if (restaurants.length === 0) {
+      containerEmpty.classList.remove('hide');
+    } else {
+      containerEmpty.classList.add('hide');
+      restaurants.forEach((restaurant) => {
+        listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
     }
-}
+    LoadingInitiator.hideLoading();
+  },
+};
 
 export default Favorite;
