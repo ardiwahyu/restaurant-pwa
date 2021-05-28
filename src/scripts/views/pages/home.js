@@ -18,11 +18,15 @@ const Home = {
     LoadingInitiator.init();
 
     LoadingInitiator.showLoading();
-    const restaurants = await RestaurantSource.listRestaurant();
-    const listContainer = document.querySelector('#container-list');
-    restaurants.forEach((restaurant) => {
-      listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-    });
+    try {
+      const restaurants = await RestaurantSource.listRestaurant();
+      const listContainer = document.querySelector('#container-list');
+      restaurants.forEach((restaurant) => {
+        listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+      });
+    } catch (error) {
+      console.log('error');
+    }
     LoadingInitiator.hideLoading();
   },
 };
