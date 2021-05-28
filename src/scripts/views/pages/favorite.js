@@ -10,6 +10,7 @@ const Favorite = {
                 <h1>FIND YOUR RESTAURANT HERE</h1>
             </div>
             <h2 id="main" class="explore-text">Your Favorite Restaurant</h2>
+            <div id="container-empty"></div>
             <div class="row" id="container-list"></div>
         `;
     },
@@ -20,9 +21,15 @@ const Favorite = {
         LoadingInitiator.showLoading()
         const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
         const listContainer = document.querySelector("#container-list");
-        restaurants.forEach((restaurant) => {
-            listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-        });
+        const containerEmpty = document.querySelector("#container-empty");
+        if (restaurants.length === 0) {
+            containerEmpty.classList.remove('hide');
+        } else {
+            containerEmpty.classList.add('hide');
+            restaurants.forEach((restaurant) => {
+                listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+            });
+        }
         LoadingInitiator.hideLoading();
     }
 }

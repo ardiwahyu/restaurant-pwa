@@ -164,10 +164,15 @@ header {
     background: #373737;
 }
 
-/* .nav-collapse {
-    display: grid;
-    grid-template-columns: auto;
-} */
+#container-empty {
+    background-image: url('../public/images/heros/no-data.jpg');
+    background-size: cover;
+    width: 450px;
+    height: 450px;
+    margin: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 
 .hamburger {
     visibility: hidden;
@@ -353,6 +358,7 @@ header {
 
 .hide {
     visibility: hidden;
+    display: none;
 }
 
 .input {
@@ -522,4 +528,13 @@ header {
         cursor: pointer;
         align-self: center;
     }
+
+    #container-empty {
+    background-image: url('../public/images/heros/no-data.jpg');
+    background-size: cover;
+    width: 100%;
+    margin: auto;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 }
