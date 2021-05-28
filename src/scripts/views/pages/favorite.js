@@ -19,16 +19,20 @@ const Favorite = {
     LoadingInitiator.init();
 
     LoadingInitiator.showLoading();
-    const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
-    const listContainer = document.querySelector('#container-list');
-    const containerEmpty = document.querySelector('#container-empty');
-    if (restaurants.length === 0) {
-      containerEmpty.classList.remove('hide');
-    } else {
-      containerEmpty.classList.add('hide');
-      restaurants.forEach((restaurant) => {
-        listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
-      });
+    try {
+      const restaurants = await FavoriteRestaurantIdb.getAllRestaurants();
+      const listContainer = document.querySelector('#container-list');
+      const containerEmpty = document.querySelector('#container-empty');
+      if (restaurants.length === 0) {
+        containerEmpty.classList.remove('hide');
+      } else {
+        containerEmpty.classList.add('hide');
+        restaurants.forEach((restaurant) => {
+          listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
+        });
+      }
+    } catch (error) {
+      alert(`${error}\nGagal memuat halaman, cobalah beberapa saat lagi`);
     }
     LoadingInitiator.hideLoading();
   },

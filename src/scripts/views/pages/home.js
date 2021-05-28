@@ -25,7 +25,7 @@ const Home = {
         listContainer.innerHTML += createRestaurantItemTemplate(restaurant);
       });
     } catch (error) {
-      console.log('error');
+      alert(`${error}\nGagal memuat halaman, cobalah beberapa saat lagi`);
     }
     LoadingInitiator.hideLoading();
   },
