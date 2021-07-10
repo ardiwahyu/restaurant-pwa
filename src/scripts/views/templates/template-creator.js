@@ -43,7 +43,7 @@ const createRestaurantItemTemplate = (restaurant) => `
     <a href="/#/detail/${restaurant.id}">
         <div class="column">
             <div class="card">
-                <img class="icon" alt="${restaurant.name}" src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}">
+                <img class="icon lazyload" alt="${restaurant.name}" data-src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}">
                 <div class="city">
                     <p class="text-city">${restaurant.city}</p>
                 </div>
@@ -76,13 +76,13 @@ const createRestaurantDetailTemplate = (restaurant) => `
     <button id="btn-show" class="btn-show">Show All</button>
 `;
 
-const createLikeButtonTemplate = () => `
+const createLikeRestaurantButtonTemplate = () => `
     <button aria-label="like this movie" id="likeButton" class="like">
         <i class="fa fa-heart-o" aria-hidden="true"></i>
     </button>
     `;
 
-const createLikedButtonTemplate = () => `
+const createUnlikeRestaurantButtonTemplate = () => `
     <button aria-label="unlike this movie" id="likeButton" class="like">
         <i class="fa fa-heart" aria-hidden="true"></i>
     </button>
@@ -90,5 +90,5 @@ const createLikedButtonTemplate = () => `
 
 export {
   createRestaurantItemTemplate, createRestaurantDetailTemplate,
-  createAllReview, createLikedButtonTemplate, createLikeButtonTemplate,
+  createAllReview, createLikeRestaurantButtonTemplate, createUnlikeRestaurantButtonTemplate,
 };

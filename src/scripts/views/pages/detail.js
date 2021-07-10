@@ -10,7 +10,14 @@ import LoadingInitiator from '../../utils/loading-initiator';
 const Detail = {
   async render() {
     return `
-            <div class="banner"></div>
+            <div class="banner">
+              <picture>
+                <source media="(max-width: 600px)" srcset="./images/hero-image_2-small.jpg"/>
+                <img
+                  src='./images/hero-image_2-large.jpg'
+                  alt="banner"></img>
+              </picture>
+            </div>
             <div class="text">
                 <h1>FIND YOUR RESTAURANT HERE</h1>
             </div>

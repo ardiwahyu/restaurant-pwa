@@ -5,12 +5,26 @@ import LoadingInitiator from '../../utils/loading-initiator';
 const Favorite = {
   async render() {
     return `
-            <div class="banner"></div>
+            <div class="banner">
+              <picture>
+                <source media="(max-width: 600px)" srcset="./images/hero-image_2-small.jpg"/>
+                <img
+                  src='./images/hero-image_2-large.jpg'
+                  alt="banner"></img>
+              </picture>
+            </div>
             <div class="text">
                 <h1>FIND YOUR RESTAURANT HERE</h1>
             </div>
             <h2 id="main" class="explore-text">Your Favorite Restaurant</h2>
-            <div id="container-empty"></div>
+            <div id="container-empty">
+              <picture>
+                <source media="(max-width: 600px)" srcset="./images/no-data-small.jpg"/>
+                <img
+                  src='./images/no-data-large.jpg'
+                  alt="banner"></img>
+              </picture>
+            </div>
             <div class="row" id="container-list"></div>
         `;
   },
