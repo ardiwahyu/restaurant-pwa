@@ -4,7 +4,7 @@ import {
   createRestaurantDetailTemplate,
   createAllReview,
 } from '../templates/template-creator';
-import LikeButtonInitiator from '../../utils/like-button-initiator';
+import LikeButtonInitiator from '../../utils/like-button-presenter';
 import LoadingInitiator from '../../utils/loading-initiator';
 
 const Detail = {

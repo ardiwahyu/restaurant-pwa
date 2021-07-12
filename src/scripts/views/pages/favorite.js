@@ -17,13 +17,7 @@ const Favorite = {
                 <h1>FIND YOUR RESTAURANT HERE</h1>
             </div>
             <h2 id="main" class="explore-text">Your Favorite Restaurant</h2>
-            <div id="container-empty">
-              <picture>
-                <source media="(max-width: 600px)" srcset="./images/no-data-small.jpg"/>
-                <img
-                  src='./images/no-data-large.jpg'
-                  alt="banner"></img>
-              </picture>
+            <div id="container-empty">No Data Found</picture>
             </div>
             <div class="row" id="container-list"></div>
         `;
