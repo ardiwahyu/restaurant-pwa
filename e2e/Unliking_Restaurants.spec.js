@@ -10,14 +10,18 @@ Before(({ I }) => {
 Scenario('Uniking one retaurant', ({ I }) => {
   /*skema like*/
   I.seeElement('.restaurant-item');
-  I.click(locate('.restaurant-item').first());
+  const firstRestaurantHome = locate('.restaurant-item').first();
+  I.click(firstRestaurantHome);
+  I.waitForClickable(firstRestaurantHome, 5);
   I.seeElement('#likeButton');
   I.click('#likeButton');
 
   /*skema unlike*/
   I.amOnPage('/#/favorite');
   I.seeElement('.restaurant-item');
-  I.click(locate('.restaurant-item').first());
+  const firstRestaurantFav = locate('.restaurant-item').first();
+  I.click(firstRestaurantFav);
+  I.waitForClickable(firstRestaurantFav, 5);
   I.seeElement('#likeButton');
   I.click('#likeButton');
   I.amOnPage('/#/favorite');

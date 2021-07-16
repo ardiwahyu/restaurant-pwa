@@ -1,3 +1,4 @@
+/* eslint-disable linebreak-style */
 /* eslint-disable no-undef */
 const assert = require('assert');
 
@@ -15,6 +16,7 @@ Scenario('liking one retaurant', async ({ I }) => {
   const firstRestaurant = locate('.restaurant-item a').first();
   const firstRestaurantTitle = await I.grabTextFrom(firstRestaurant);
   I.click(firstRestaurant);
+  I.waitForClickable(firstRestaurant, 5);
   I.seeElement('#likeButton');
   I.click('#likeButton');
   I.amOnPage('/#/favorite');
