@@ -41,7 +41,7 @@ const createAllReview = (array) => {
 
 const createRestaurantItemTemplate = (restaurant) => `
     <div class='restaurant-item'>
-      <a href="/restaurant-pwa/#/detail/${restaurant.id}">
+      <a href="/#/detail/${restaurant.id}">
         <div class="column">
             <div class="card">
                 <img class="icon lazyload" alt="${restaurant.name}" data-src="${CONFIG.BASE_IMAGE_URL}medium/${restaurant.pictureId}">
